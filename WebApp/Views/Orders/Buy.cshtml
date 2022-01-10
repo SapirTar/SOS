@@ -1,0 +1,40 @@
+﻿@model WebApp.Models.Order
+
+@{
+    ViewData["Title"] = "Buy Stock";
+}
+
+<h1>Trade</h1>
+
+<h4>Stock</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Buy" asp-controller="Orders" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Date" class="form-control" value="@ViewBag.orderDate" />
+            <input type="hidden" asp-for="UserName" class="form-control" value="@ViewBag.orderUsername" />
+            <input type="hidden" asp-for="Symbol" class="form-control" value="@ViewBag.orderStockSymbol" />
+
+            <div class="form-group">
+                <label asp-for="Amount" class="control-label"></label>
+                <input type="number" asp-for="Amount" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="PricePerUnit" class="form-control" value="@ViewBag.orderPricePerUnit" />
+            <input type="hidden" asp-for="Total" class="form-control" value="0"/>
+
+            <div class="form-group">
+                <input type="submit" value="Buy" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="Stocks" asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

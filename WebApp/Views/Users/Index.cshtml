@@ -1,0 +1,61 @@
+﻿@model IEnumerable<WebApp.Models.User>
+
+@{ ViewData["Title"] = "Index"; }
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<h1>User Managment</h1>
+
+<p>
+    <a class="btn-outline-dark" asp-action="Search">Search</a>   |
+    <a class="btn-outline-dark" asp-action="Create">Create New User</a>   |
+    <a class="btn-outline-dark" asp-action="StocksGroupBy">Stocks Groupped by Category</a>
+</p>
+<table class="table table-hover table-responsive">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Birthdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Admin)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Username)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Password)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Birthdate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Admin)
+    </td>
+    <td>
+        <a asp-action="Edit" asp-route-id="@item.Username" class="normal-link">Edit</a> |
+        <a asp-action="Details" asp-route-id="@item.Username" class="normal-link">Details</a> |
+        <a asp-action="Delete" asp-route-id="@item.Username" class="normal-link">Delete</a>
+    </td>
+</tr>
+}
+    </tbody>
+</table>

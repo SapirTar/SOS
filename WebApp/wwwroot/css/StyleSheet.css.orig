@@ -1,0 +1,250 @@
+<<<<<<< HEAD
+/*
+    dark blue-
+     rgb(48, 52, 129) 303481
+    light blue-
+     rgb(214, 230, 242) D6E6F2
+    very light gray-
+     rgb(245, 245, 245) F5F5F5
+    yellow-
+     rgb(255, 242, 0) FFF200
+*/
+
+/*---------------------------------------------------------*/
+/* GENERAL */
+/*---------------------------------------------------------*/
+
+body {
+    font-family: 'Exo 2';
+    padding-top: 80px;
+    align-content: center;
+    align-items: center;
+    background-color: #F5F5F5;
+}
+
+.nav-bg-light {
+    background-color: rgb(214, 230, 242);
+    box-shadow: 0 0 5px #2f2f2f;
+    
+}
+
+
+.seprator {
+    font-size: 50px;
+    text-shadow: 0 0 3px #FFF200;
+    color: #FFF200;
+}
+
+.big-icon {
+    display: inline-block;
+    font-size: 80px;
+    font-weight: 400;
+    text-shadow: 0 0 20px #2f2f2f;
+    stroke: rgba(0,0,0,0.5);
+
+
+}
+h3 {
+    padding: 20px;
+    text-shadow: 3px 2px 3px #000;
+}
+
+/*--------------------------------------------------------*/
+/*  HOME PAGE  */
+/*--------------------------------------------------------*/
+.index {
+    /*Backgroung properties*/
+    background-image: url(../images/homepage/background-photo2.png);
+    background-size: cover;
+    background-attachment: fixed;
+    /*fonts*/
+    color: #F5F5F5;
+    align-content:center;
+}
+
+#map {
+    height: 400px;
+    width: 80%;
+    margin: 0 10% 0 10%;
+    border: 2px solid rgb(245 245 245 / 0.2);
+    border-radius: inherit;
+ 
+}
+
+#video {
+    height: auto;
+    width: 80%;
+    margin: 0 10% 0 10%;
+    border: 2px solid rgb(245 245 245 / 0.2);
+    border-radius: inherit;
+}
+
+/*--------------------------------------------------------*/
+/* NavBar */
+/*--------------------------------------------------------*/
+.navbar-light .navbar-nav .nav-link {
+    color: #303481;
+    font-size: 20px;
+    margin: 0 10px 0 10px;
+    transition: text-decoration 1s;
+}
+
+    .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
+        color: #303481;
+        text-decoration-color: #FFF200;
+        text-decoration-line: underline;
+        text-decoration-style: solid;
+        text-shadow: 0 0 3px #FFF200;
+    }
+
+.navbar-light .navbar-nav .nav-link.disabled,
+ .navbar-light .navbar-nav .nav-link:active {
+    color: #303481;
+    text-decoration: none;
+    text-shadow: 0 0 2px #303481;
+    
+}
+
+.small-lable {
+    font-size: 10px;
+}
+
+.registration {
+    align-content: center;
+}
+
+.form-control{
+    align-items: center;
+}
+
+.normal-link {
+    color: #303481;
+}
+
+.normal-link:hover {
+    text-decoration-color: #FFF200;
+}
+
+
+aside {
+    width: 40%;
+    padding-left: .5rem;
+    margin-left: .5rem;
+    float: right;
+    box-shadow: inset 5px 0 5px -5px #29627e;
+    font-style: italic;
+    color: #29627e;
+}
+
+    aside > p {
+        margin: .5rem;
+    }
+
+#canvas {
+    background-color: #fff;
+    border: 2px solid black;
+
+    margin: 0;
+    padding: 0;
+
+    width: 50vw;
+    height: 30vh;
+}
+||||||| 55ccd38
+=======
+/*
+    dark blue-
+     rgb(48, 52, 129) 303481
+    light blue-
+     rgb(214, 230, 242) D6E6F2
+    very light gray-
+     rgb(245, 245, 245) F5F5F5
+    yellow-
+     rgb(255, 242, 0) FFF200
+*/
+
+/*---------------------------------------------------------*/
+/* GENERAL */
+/*---------------------------------------------------------*/
+body {
+    font-family: 'Exo 2';
+    padding-top: 80px;
+    align-content: center;
+    align-items: center;
+    background-color: #F5F5F5;
+}
+
+.nav-bg-light {
+    background-color: rgb(214, 230, 242);
+    box-shadow: 0 0 5px #2f2f2f;
+    
+}
+
+
+.seprator {
+    font-size: 50px;
+    text-shadow: 0 0 3px #FFF200;
+    color: #FFF200;
+}
+
+.big-icon {
+    display: inline-block;
+    font-size: 80px;
+    font-weight: 400;
+    text-shadow: 0 0 20px #2f2f2f;
+    stroke: rgba(0,0,0,0.5);
+
+}
+h3 {
+    padding: 20px;
+    text-shadow: 3px 2px 3px #000;
+}
+
+/*--------------------------------------------------------*/
+/*  HOME PAGE  */
+/*--------------------------------------------------------*/
+.index {
+    /*Backgroung properties*/
+    background-image: url(../images/homepage/background-photo2.png);
+    background-size: cover;
+    background-attachment: fixed;
+    /*fonts*/
+    color: #F5F5F5;
+    align-content:center;
+}
+
+#map {
+    height: 400px;
+    width: 80%;
+    margin: 0 10% 0 10%;
+}
+
+#video {
+    height: 400px;
+    width: 80%;
+}
+
+/*--------------------------------------------------------*/
+/* NavBar */
+/*--------------------------------------------------------*/
+.navbar-light .navbar-nav .nav-link {
+    color: #303481;
+    font-size: 20px;
+    margin: 0 10px 0 10px;
+}
+
+    .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
+        color: #303481;
+        text-decoration-line: underline;
+        text-decoration-style: solid;
+        text-decoration-color: #FFF200;
+        text-shadow: 0 0 3px #FFF200;
+    }
+
+    .navbar-light .navbar-nav .nav-link.disabled,
+    .navbar-light .navbar-nav .nav-link:active {
+        color: #303481;
+        text-decoration: none;
+        text-shadow: 0 0 2px #303481;
+    }
+>>>>>>> 3a7376ebed44f88d2c5e2b2065e3db626afe674a

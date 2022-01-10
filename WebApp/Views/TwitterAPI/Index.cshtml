@@ -1,0 +1,26 @@
+﻿@model IEnumerable<TweetSharp.TwitterStatus>
+@{
+    ViewData["Title"] = "Our Experts' Recommend";
+}
+<h1>Our Experts' Recommendation</h1> <br />
+
+<table class="table table-responsive">
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                
+                <lable class="font-weight-bolder"><ion-icon name="logo-twitter" class="font-weight-bold"></ion-icon> @Html.DisplayFor(modelItem => item.Author.ScreenName)</lable>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Text)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

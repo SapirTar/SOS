@@ -1,0 +1,55 @@
+﻿@model IEnumerable<WebApp.Models.CreditCard>
+
+@{ ViewData["Title"] = "Search Credit Card"; }
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<br />
+<h2>Search Credit Card</h2>
+
+@using (Html.BeginForm("Search", "CreditCards", FormMethod.Post))
+{
+    @Html.AntiForgeryToken();
+
+<p>
+    Credit Card Number: <input type="text" name="number" />
+</p>
+
+<p>
+    <input type="submit" value="Search credit card" />
+</p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CardNum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CVV)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CardHolder)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.CardNum)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CVV)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CardHolder)
+    </td>
+</tr>
+}
+    </tbody>
+</table>
+
+<br />

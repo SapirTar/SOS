@@ -1,0 +1,183 @@
+@model IEnumerable<WebApp.Models.Stock>
+
+    @{
+    ViewData["Title"] = "Index";
+    }
+
+    <h1>Trade</h1>
+
+    <body>
+        <script>
+            function loadXMLDoc() {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        myFunction(this);
+                    }
+                };
+                xmlhttp.open("GET", "/hot_stocks.xml", true);
+                xmlhttp.send();
+            }
+            function myFunction(xml) {
+                var i;
+                var xmlDoc = xml.responseXML;
+                var table = "<tr><th>Name</th><th>Symbol</th><th>Market</th></tr>";
+                var x = xmlDoc.getElementsByTagName("STOCK");
+                for (i = 0; i < x.length; i++) {
+                    table += "<tr><td>" +
+                        x[i].getElementsByTagName("NAME")[0].childNodes[0].nodeValue +
+                        "</td><td>" +
+                        x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+                        "</td><td>" +
+                        x[i].getElementsByTagName("MARKET")[0].childNodes[0].nodeValue +
+                        "</td></tr>";
+                }
+                document.getElementById("hotstocks").innerHTML = table;
+            }
+        </script>
+    </body>
+
+    @using (Html.BeginForm("SearchStocks", "Stocks", FormMethod.Get))
+    {
+    <table>
+        <tr>
+            <th colspan="2" align="center">Search Stocks</th>
+        </tr>
+        <tr>
+            <td>Low Price: </td>
+            <td>High Price: </td>
+            <td>Does Price increased\decreased? </td>
+            <td>Category</td>
+            <td>Index</td>
+        </tr>
+        <tr>
+            <td>@Html.TextBox("lowPrice")</td>
+            <td>@Html.TextBox("highPrice")</td>
+            <td>
+                @Html.DropDownList("change", new List<SelectListItem>
+                    {
+                    new SelectListItem { Text = "Increased", Value = "inc" },
+                    new SelectListItem { Text = "Decreased", Value = "dec" }}, "Please select")
+            </td>
+            <td>@Html.DropDownList("indexName", new SelectList(ViewBag.allCategories), "Please select")</td>
+            <td> @Html.DropDownList("indexName", new SelectList(ViewBag.allIndices), "Please select")</td>
+            <td>  <input type="submit" value="Search stocks" /></td>
+        </tr>
+    </table>
+
+    }
+
+
+    @{
+    if (User.Identity.IsAuthenticated)
+    {
+    var isAdmin = false;
+    var claims = User.Claims.ToList();
+    foreach (var c in claims)
+    {
+    if (c.Value == "Admin")
+    {
+    isAdmin = true;
+    }
+    }
+
+    if (isAdmin)
+    {
+        <p>
+            <a class="btn-outline-dark" asp-action="Create">Create New</a> |
+            <a class="btn-outline-dark" asp-area="" asp-controller="Stocks" asp-action="Search">Search</a>
+        </p>
+
+
+    }
+    }
+    }
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Change)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Change)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+
+                @{
+                if (User.Identity.IsAuthenticated)
+                {
+                var isAdmin = false;
+                var claims = User.Claims.ToList();
+                foreach (var c in claims)
+                {
+                if (c.Value == "Admin")
+                {
+                isAdmin = true;
+                }
+                }
+
+                if (isAdmin)
+                {
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Symbol">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Symbol">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Symbol">Delete</a>
+                    </td>
+                }
+
+                else
+                {
+                    <td>
+                        <a asp-action="Buy" asp-controller="Orders" asp-route-symbol="@item.Symbol">Buy</a>
+                        @using (Html.BeginForm("Buy", "Orders", FormMethod.Get))
+                    {
+                        @Html.AntiForgeryToken();
+
+                        <input type="submit" id="btnBuy" class="btn-success" name="submit" value="Buy" asp-action="Buy" asp-controller="Orders" asp-route-symbol="@item.Symbol" />
+                    }
+
+
+
+                    </td>
+                }
+                }
+                }
+
+            </tr>
+            }
+
+        </tbody>
+    </table>
+
+
+    <!-- Ajax -->
+
+    <button type="button" onclick="loadXMLDoc()" class="btn btn-outline-info">
+        Hot stocks &#128293
+        <br />
+        <table id="hotstocks"></table>

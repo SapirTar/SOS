@@ -1,0 +1,73 @@
+﻿@model IEnumerable<WebApp.Models.User>
+
+@{ ViewData["Title"] = "Search User"; }
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<br />
+<h2>Search User</h2>
+
+@using (Html.BeginForm("Search", "Users", FormMethod.Post))
+{
+    @Html.AntiForgeryToken();
+
+<p>
+    Name: <input type="text" name="username" class="input-xlarge form-control" />
+</p>
+<p>
+    Email: <input type="text" name="email" class="input-xlarge form-control" />
+</p>
+<p>
+    <input type="submit" value="Search user" class="btn btn-outline-dark"/>
+</p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Birthdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Admin)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Username)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Password)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Birthdate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Admin)
+    </td>
+
+</tr>
+}
+    </tbody>
+</table>
+
+<br />
+<div>
+    <a asp-action="Index" class="normal-link">Back to List</a>
+</div>

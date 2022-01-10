@@ -1,0 +1,128 @@
+<<<<<<< HEAD
+﻿@{
+    ViewData["Title"] = "SOStock";
+}
+
+<!-- HEAD -->
+<head>
+</head>
+
+<!-- BODY -->
+<body class="index">
+    <div class="text-center">
+
+        <h1 class="display-4">Welcome to Sostock</h1>
+
+        <h2>A site where you can buy, sell and trade real world stocks.</h2>
+
+        <p class="text-center">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum id ipsum vel suscipit. Nunc aliquet laoreet nisl, nec aliquam nunc dictum et. Aliquam euismod cursus est, et porttitor erat porta vel. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget risus gravida, maximus orci in, vestibulum risus. Nunc facilisis sapien eu malesuada aliquet. Proin libero neque, commodo in sem ut, cursus ultricies metus. Sed leo nunc, placerat quis vestibulum in, luctus in nulla. Etiam tempor leo non orci mattis viverra. Proin fermentum quis eros id semper. Suspendisse eget rutrum nisl, sed interdum risus. Vestibulum laoreet finibus cursus. Morbi suscipit vel ipsum eget volutpat. Proin at maximus quam. Nam hendrerit vitae purus sed blandit. Etiam ultricies vehicula lorem, id sodales diam luctus sit amet.
+
+            Ut suscipit ipsum ligula, nec egestas sapien tincidunt nec. Sed quis viverra dolor, tempor iaculis felis. Ut vel dolor nunc. Maecenas dignissim vel diam eget bibendum. Pellentesque volutpat leo non lorem faucibus, aliquet tincidunt leo sollicitudin. Cras condimentum libero lacus, id ultricies nulla semper nec. Vivamus egestas lacus et arcu convallis, bibendum cursus lacus aliquam. Suspendisse hendrerit rutrum felis vel viverra. Vivamus ut venenatis nisi, in semper velit. Aliquam tempus mi vel porta consectetur. Vestibulum pulvinar quam non leo elementum congue.
+
+        </p>
+
+        <br />
+        <p class="seprator">. .  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</p>
+
+        <h3>All the reasons to choose us</h3>
+
+        <section class="row mb-3">
+            <section class="col-4 col-sm-4">
+
+                <ion-icon name="accessibility-outline" class="big-icon"></ion-icon><br />
+                Ut suscipit ipsum ligula, nec egestas sapien tincidunt nec. Sed quis vive Aliquam tempus mi vel porta consectetur. Vestibulum pulvinar quam non leo elementum congue.
+            </section>
+
+            <section class="col-4 col-sm-4">
+                <ion-icon name="bulb-outline" class="big-icon"></ion-icon><br />
+                Ut suscipit ipsum ligula, nec egestas sapien tincidunt nec. Sed quis vive Aliquam tempus mi vel porta consectetur. Vestibulum pulvinar quam non leo elementum congue.
+            </section>
+            <section class="col-4 col-sm-4">
+                <ion-icon name="cash-outline" class="big-icon"></ion-icon><br />
+                Ut suscipit ipsum ligula, nec egestas sapien tincidunt nec. Sed quis vive Aliquam tempus mi vel porta consectetur. Vestibulum pulvinar quam non leo elementum congue.
+            </section>
+        </section>
+
+        <p class="seprator">. .  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</p>
+        <h3>Where we at...</h3>
+
+        <div id="map" class="map-trades"></div>
+        <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJ8j53SCZ1Us15yKwkXfbIyEAXsg-OenA&callback=initMap"></script>
+
+        <p class="seprator">. .  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</p>
+        <h3>Have some fresh start</h3>
+
+        <video id="video" controls>
+            <source src="~/videos/Investing in stocks.mp4" type="video/mp4">
+
+            Your browser does not support the video tag.
+        </video>
+
+    </div>
+
+
+</body>
+
+||||||| 55ccd38
+=======
+﻿@{
+    ViewData["Title"] = "SOStock";
+}
+
+<!-- HEAD -->
+<head>
+</head>
+
+<!-- BODY -->
+<body class="index">
+    <div class="text-center">
+
+        <h1 class="display-4">Welcome to Sostock</h1>
+        <h2>A site where you can buy, sell and trade real world stocks.</h2>
+
+        <p class="text-center">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum id ipsum vel suscipit. Nunc aliquet laoreet nisl, nec aliquam nunc dictum et. Aliquam euismod cursus est, et porttitor erat porta vel. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget risus gravida, maximus orci in, vestibulum risus. Nunc facilisis sapien eu malesuada aliquet. Proin libero neque, commodo in sem ut, cursus ultricies metus. Sed leo nunc, placerat quis vestibulum in, luctus in nulla. Etiam tempor leo non orci mattis viverra. Proin fermentum quis eros id semper. Suspendisse eget rutrum nisl, sed interdum risus. Vestibulum laoreet finibus cursus. Morbi suscipit vel ipsum eget volutpat. Proin at maximus quam. Nam hendrerit vitae purus sed blandit. Etiam ultricies vehicula lorem, id sodales diam luctus sit amet.
+
+            Ut suscipit ipsum ligula, nec egestas sapien tincidunt nec. Sed quis viverra dolor, tempor iaculis felis. Ut vel dolor nunc. Maecenas dignissim vel diam eget bibendum. Pellentesque volutpat leo non lorem faucibus, aliquet tincidunt leo sollicitudin. Cras condimentum libero lacus, id ultricies nulla semper nec. Vivamus egestas lacus et arcu convallis, bibendum cursus lacus aliquam. Suspendisse hendrerit rutrum felis vel viverra. Vivamus ut venenatis nisi, in semper velit. Aliquam tempus mi vel porta consectetur. Vestibulum pulvinar quam non leo elementum congue.
+
+        </p>
+        <br />
+        <p class="seprator">. .  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</p>
+
+        <h3>All the reasons to choose us</h3>
+
+        <div class="row mb-3">
+            <div class="col-4 col-sm-4">
+
+                <ion-icon name="accessibility-outline" class="big-icon"></ion-icon><br />
+                Ut suscipit ipsum ligula, nec egestas sapien tincidunt nec. Sed quis vive Aliquam tempus mi vel porta consectetur. Vestibulum pulvinar quam non leo elementum congue.
+            </div>
+
+            <div class="col-4 col-sm-4">
+                <ion-icon name="bulb-outline" class="big-icon"></ion-icon><br />
+                Ut suscipit ipsum ligula, nec egestas sapien tincidunt nec. Sed quis vive Aliquam tempus mi vel porta consectetur. Vestibulum pulvinar quam non leo elementum congue.
+            </div>
+            <div class="col-4 col-sm-4">
+                <ion-icon name="cash-outline" class="big-icon"></ion-icon><br />
+                Ut suscipit ipsum ligula, nec egestas sapien tincidunt nec. Sed quis vive Aliquam tempus mi vel porta consectetur. Vestibulum pulvinar quam non leo elementum congue.
+            </div>
+        </div>
+
+        <p class="seprator">. .  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</p>
+        <h3>Where we at...</h3>
+
+        <div id="map" class="map-trades"></div>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9woOToLgjWhWAVO0qTl8qOTTOd6N9x7E&callback=initMap"
+                async></script>
+
+        <p class="seprator">. .  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</p>
+        <h3>Have some fresh start</h3>
+        <iframe id="video" src="https://www.youtube.com/embed/giGcuofIYis" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+    </div>
+
+</body>
+
+>>>>>>> 3a7376ebed44f88d2c5e2b2065e3db626afe674a

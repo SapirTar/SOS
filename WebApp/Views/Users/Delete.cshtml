@@ -1,0 +1,49 @@
+﻿@model WebApp.Models.User
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Notice! Account deletion is not recoverable! </h3>
+<div>
+    <h4> @Html.DisplayFor(model => model.Username)</h4>
+    <hr />
+    <dl class="row">
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Birthdate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Birthdate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Admin)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Admin)
+        </dd>
+    </dl>
+</div>
+    
+<aside>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Username" />
+        <input type="submit" value="Delete" class="btn btn-danger " /> |
+        <a asp-action="Index" class="normal-link">Back to List</a>
+    </form>
+</aside>
+

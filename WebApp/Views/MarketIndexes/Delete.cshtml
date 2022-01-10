@@ -1,0 +1,24 @@
+﻿@model WebApp.Models.MarketIndex
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+
+<h3>Notice! Index deletion is not recoverable! </h3>
+<div>
+    <h4>MarketIndex</h4>
+    <hr />
+    <dl class="row">
+    </dl>
+</div>
+<aside>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Name" />
+        <input type="submit" value="Delete" class="btn btn-danger " /> |
+        <a asp-action="Index" class="normal-link">Back to List</a>
+    </form>
+</aside>
+

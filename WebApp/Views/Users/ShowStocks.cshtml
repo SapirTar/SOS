@@ -1,0 +1,36 @@
+﻿@model WebApp.Models.OrderAndStockViewModel
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <p>Order Amount</p>
+            </th>
+            <th>
+                <p>Stock Name</p>
+            </th>
+            <th>
+                <p>Stock Symbol</p>
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.StockOrders)
+        {
+        <tr>
+            <td>
+                @item.OrderAmount
+            </td>
+            <td>
+                @item.StockName
+            </td>
+            <td>
+                @item.StockSymbol
+            </td>
+
+        </tr>
+        }
+    </tbody>
+</table>

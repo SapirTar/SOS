@@ -1,0 +1,53 @@
+﻿@model WebApp.Models.User
+
+@{
+    ViewData["Title"] = "My Profile";
+}
+
+<br />
+<h1>Hello @Html.DisplayFor(model => model.Username)!</h1>
+<br />
+<a asp-controller="Users" asp-action="ShowStocks" asp-route-id="@Model.Username" class="btn-outline-dark">Show owned stocks</a> |
+<a asp-action="InputCC" class="btn-outline-dark">Enter Credit Card</a> |
+<a asp-action="Statistics" class="btn-outline-dark">Statistics</a>
+<br />
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Birthdate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Birthdate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Admin)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Admin)
+        </dd>
+
+        @foreach (Stock stock in Model.OwnedStocks)
+        {
+            <dt class="col-sm-2">
+                @stock.Name
+            </dt>
+            <dd class="col-sm-10">
+                @stock.Symbol
+            </dd>
+        }
+    </dl>
+</div>

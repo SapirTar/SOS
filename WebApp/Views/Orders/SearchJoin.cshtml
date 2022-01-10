@@ -1,0 +1,35 @@
+﻿@model UserAndOrderViewModel
+
+@{ ViewData["Title"] = "Search Order"; }
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <p>Username</p>
+            </th>
+            <th>
+                <p>OrderID</p>
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.UserOrders)
+        {
+            <tr>
+                <td>
+                    @item.UserUsername
+                </td>
+                <td>
+                    @item.OrderOrderID
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

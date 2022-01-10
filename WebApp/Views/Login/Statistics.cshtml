@@ -1,0 +1,220 @@
+﻿@model WebApp.Models.User
+@{
+
+    ViewData["Title"] = "Statistics";
+    var ownedStocks = Model.OwnedStocks;
+    bool hasStocks = false; //change to false after db will work
+
+    int countCat = 0;
+    int countStk = 0;
+
+
+    Dictionary<string, int> AmountFromCategory = new Dictionary<string, int>();
+    AmountFromCategory.Add("Parmaceutical", 0);
+    AmountFromCategory.Add("Airline", 0);
+    AmountFromCategory.Add("Technology", 0);
+    AmountFromCategory.Add("Vehicle manufacturer", 0);
+
+    Dictionary<string, int> AmountFromStock = new Dictionary<string, int>();
+    AmountFromStock.Add("IBM", 0);
+    AmountFromStock.Add("MSFT", 0);
+    AmountFromStock.Add("Teva", 0);
+    AmountFromStock.Add("UAL", 0);
+    AmountFromStock.Add("ELALF", 0);
+    AmountFromStock.Add("M1RN34.SAO", 0);
+    AmountFromStock.Add("PFE", 0);
+    AmountFromStock.Add("TSLA", 0);
+    AmountFromStock.Add("GOOGL", 0);
+    AmountFromStock.Add("BMWYY", 0);
+
+    List<string> CategoryColors = new List<string>();
+    CategoryColors.Add("#C8C4FD");
+    CategoryColors.Add("#6C62F9");
+    CategoryColors.Add("#1809EC");
+    CategoryColors.Add("#0C0476");
+
+    List<string> StocksColors = new List<string>();
+    StocksColors.Add("#F9F871");
+    StocksColors.Add("#FFBB34");
+    StocksColors.Add("#FF693F");
+    StocksColors.Add("#FF0072");
+    StocksColors.Add("#EB00B9");
+    StocksColors.Add("#8B5DF8");
+    StocksColors.Add("#0008FF");
+    StocksColors.Add("#00B9FF");
+    StocksColors.Add("#00FF94");
+    StocksColors.Add("#1C8B00");
+
+
+
+    if (Model.OwnedStocks.Count > 0)
+    {
+        hasStocks = true;
+        foreach (Stock stock in Model.OwnedStocks)
+        {
+            AmountFromCategory[stock.Category]++;
+            AmountFromStock[stock.Symbol]++;
+        }
+    }
+}
+
+<script src="~/lib/d3/d3.min.js"></script>
+<h1>Statistics</h1>
+<hr />
+
+<body>
+    <div>
+
+
+        @if (hasStocks)
+        {
+            <section class="row py-sm-4">
+
+                <section class="col-3">
+
+                    <h5> Investments by category</h5>
+
+                    @foreach (var pair in AmountFromCategory)
+                    {
+
+                        @if (pair.Value != 0)
+                        {
+                            <p style="color:@CategoryColors[countCat]"> @pair.Key </p>
+                            countCat++;
+                        }
+                    }
+                </section>
+
+                <section class="col-3 " id="stocksbycategory">
+                </section>
+
+
+            </section>
+
+            <section class="row py-sm-4">
+                <section class="col-3 ">
+                    <h5> Investments by Name</h5>
+
+                    @foreach (var pair in AmountFromStock)
+                    {
+
+                        @if (pair.Value != 0)
+                        {
+                            <p style="color:@StocksColors[countStk]">  @pair.Key  </p>
+                            countStk++;
+                        }
+                    }
+                </section>
+
+                <section class="col-3" id="stocksbyname">
+                </section>
+
+                <lable class="alert-dark" itemid="nostocks"></lable>
+
+            </section>
+        }
+        else
+        {
+            <h2 class="text-center">You dont own any stocks yet</h2>
+        }
+    </div>
+
+
+    <a asp-action="MyProfile" class="normal-link">Back to My profile</a>
+</body>
+
+<script>
+    // set the dimensions and margins of the graph
+    const width = 250,
+        height = 250,
+        margin = 8;
+
+    // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
+    const radius = Math.min(width, height) / 2 - margin;
+
+
+    //Owned Stocks By Category
+    //---------------------------------------------------------------------------------------
+
+
+    // append the svg object to the div
+    const svgcat = d3.select("#stocksbycategory")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .append("g")
+        .attr("transform", `translate(${width / 2}, ${height / 2})`);
+
+    // Create dummy data
+    //const datacat = { a: 9, b: 20, c: 30, d: 8, e: 12 }
+
+
+    const datacat = { Vehiclemanufacturer: @AmountFromCategory["Vehicle manufacturer"], Airline: @AmountFromCategory["Airline"], Technology: @AmountFromCategory["Technology"], Parmaceutical: @AmountFromCategory["Parmaceutical"]}
+
+    // set the color scale
+    const colorcat = d3.scaleOrdinal()
+        .range(["#C8C4FD", "#6C62F9", "#1809EC", "#0C0476"])
+
+    // Compute the position of each group on the pie:
+    const piecat = d3.pie()
+        .value(function (d) { return d[1] })
+    /**/
+    //const data_readycat = piecat(Object.entries(datacat))
+    const data_readycat = piecat(Object.entries(datacat))
+
+    /**/
+
+    // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
+    svgcat
+        .selectAll('whatever')
+        .data(data_readycat)
+        .join('path')
+        .attr('d', d3.arc()
+            .innerRadius(0)
+            .outerRadius(radius)
+    )
+        .attr('fill', function (d,i) { return (colorcat(d.data[i])) })
+        .attr("stroke", "black")
+        .style("stroke-width", "1px")
+   
+
+    //Owned Stocks By index
+    //---------------------------------------------------------------------------------------
+
+    // append the svg object to the div
+    const svgstocks = d3.select("#stocksbyname")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .append("g")
+        .attr("transform", `translate(${width / 2}, ${height / 2})`);
+
+    const datastocks = {IBM: @AmountFromStock["IBM"], MSFT: @AmountFromStock["MSFT"], Teva: @AmountFromStock["Teva"],
+        UAL: @AmountFromStock["UAL"], ELALF: @AmountFromStock["ELALF"], M1RN34SAO: @AmountFromStock["M1RN34.SAO"], PFE: @AmountFromStock["PFE"],
+            TSLA: @AmountFromStock["TSLA"], GOOGL: @AmountFromStock["GOOGL"], BMWYY:  @AmountFromStock["BMWYY"] }
+
+
+    // set the color scale
+    const colorstocks = d3.scaleOrdinal().range([ "#FFBB34", "#FF693F", "#FF0072", "#EB00B9", "#8B5DF8", "#0008FF", "#00B9FF", "#00FF94", "#1C8B00"])
+
+    // Compute the position of each group on the pie:
+    const piestocks = d3.pie()
+        .value(function (d) { return d[1] })
+    const data_readystocks = piestocks(Object.entries(datastocks))
+
+    // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
+    svgstocks
+        .selectAll('whatever')
+        .data(data_readystocks)
+        .join('path')
+        .attr('d', d3.arc()
+            .innerRadius(0)
+            .outerRadius(radius)
+    )
+        .attr('fill', function (d, i) { return (colorstocks(d.data[i])) })
+        .attr("stroke", "black")
+        .style("stroke-width", "1px")
+
+</script>
+
+

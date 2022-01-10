@@ -1,0 +1,54 @@
+﻿@model WebApp.Models.CreditCard
+@{
+    ViewData["Title"] = "Enter Credit Card";
+}
+
+<br />
+<h1>Provide a Credit Card</h1> <hr />
+
+<form class="form-horizontal" method="POST" asp-action="AddCreditCard">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <fieldset>
+        <br />
+        <!-- Email -->
+        <div class="control-group">
+            <label class="control-label">Card Number</label>
+            <div class="controls">
+                <span asp-validation-for="CardNum" class="text-danger"></span>
+                <input asp-for="CardNum" type="password" class="form-control" />
+                <p class="help-block small-lable">Card number has to exist of digits only</p>
+            </div>
+        </div>
+
+        <!-- Password -->
+        <div class="control-group">
+            <label class="control-label" for="password">CVV</label>
+            <div class="controls">
+                <span asp-validation-for="CVV" class="text-danger"></span>
+                <input asp-for="CVV" type="password" placeholder="" class="input-xlarge form-control" />
+                <p class="help-block small-lable">CVV has to be 3 digits</p>
+            </div>
+        </div>
+        <br />
+
+        <!-- CardHolder -->
+        <div class="control-group">
+            <label class="control-label" for="password">Card Holder</label>
+            <div class="controls">
+                <span asp-validation-for="CardHolder" class="text-danger"></span>
+                <input asp-for="CardHolder" placeholder="" class="input-xlarge form-control" />
+                <p class="help-block small-lable">Please provide the card holder name</p>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <!-- Button -->
+            <div class="controls">
+                <input type="submit" value="Send" class="btn btn-outline-dark" />
+            </div>
+        </div>
+
+    </fieldset>
+</form>
+<br />
+<a asp-action="MyProfile" class="normal-link">Back to My profile</a>

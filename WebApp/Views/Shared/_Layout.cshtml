@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Sostocks</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-reboot.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/StyleSheet.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="~/images/stock_icon.png">
+</head>
+<body>
+    <header>
+
+        <nav class="navbar navbar-expand-md navbar-light fixed-top nav-bg-light ">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">  </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" id="navbarCollapse">
+                    <img src="~/images/stock_icon.png" width="42" height="35" />
+
+
+                    <ul class="navbar-nav flex-grow-1 my-nav-prop">
+
+
+                        <li class="nav-item">
+                            <a class="nav-link font-weight-normal" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+
+                        @if (User.Identity.IsAuthenticated == false)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link  font-weight-bolder" asp-area="" asp-controller="Users" asp-action="Register">Register Now!</a>
+                            </li>
+                        }
+                        @if (User.Identity.IsAuthenticated == false)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link font-weight-normal" asp-area="" asp-controller="Login" asp-action="Index">Login</a>
+                            </li>
+                        }
+                        <li class="nav-item">
+                            <a class="nav-link text-dark font-weight-normal" asp-area="" asp-controller="Stocks" asp-action="Index">Trade</a>
+                        </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link font-weight-normal" asp-area="" asp-controller="Login" asp-action="Logout">Logout</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link font-weight-normal " asp-area="" asp-controller="Login" asp-action="MyProfile">My Profile</a>
+                            </li>
+                        }
+                        @{
+                            if (User.Identity.IsAuthenticated)
+                            {
+                                var isAdmin = false;
+                                var claims = User.Claims.ToList();
+                                foreach (var c in claims)
+                                {
+                                    if (c.Value == "Admin")
+                                    {
+                                        isAdmin = true;
+                                    }
+                                }
+
+                                if (isAdmin == true)
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link font-weight-normal" asp-area="" asp-controller="Users" asp-action="Index">User Managment</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link font-weight-normal" asp-area="" asp-controller="Orders" asp-action="Index">Orders</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link font-weight-normal" asp-area="" asp-controller="MarketIndexes" asp-action="Index">Market Indices</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link font-weight-normal" asp-area="" asp-controller="CreditCards" asp-action="Index">Credit Cards</a>
+                                    </li>
+                                }
+                            }
+
+                        }
+                        <li class="nav-item">
+                            <a class="nav-link font-weight-normal" asp-area="" asp-controller="TwitterAPI" asp-action="Index">Twitter</a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+        </nav>
+
+        @if (User.Identity.IsAuthenticated == false)
+        {
+            <div class="hello-user"> Hello guest!</div>
+        }
+        else
+        {
+            var claims = User.Claims.ToList();
+            <div class="hello-user">Hello, @claims[0].ToString().Substring(9)!</div>
+        }
+
+
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - WebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+</body>
+</html>

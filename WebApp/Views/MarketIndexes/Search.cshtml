@@ -1,0 +1,43 @@
+﻿@model IEnumerable<WebApp.Models.MarketIndex>
+
+@{ ViewData["Title"] = "Search Credit Card"; }
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<br />
+<h2>Search Index</h2>
+
+@using (Html.BeginForm("Search", "MarketIndexes", FormMethod.Post))
+{
+    @Html.AntiForgeryToken();
+
+    <p>
+        Index name: <input type="text" name="name" />
+    </p>
+
+    <p>
+        <input type="submit" value="Search Index" />
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br />

@@ -1,0 +1,66 @@
+﻿@model IEnumerable<WebApp.Models.Stock>
+
+@{ ViewData["Title"] = "Search Stock"; }
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<br />
+<h2>Search Stock</h2>
+
+@using (Html.BeginForm("Search", "Stocks", FormMethod.Post))
+{
+    @Html.AntiForgeryToken();
+
+<p>
+    Symbol: <input type="text" name="symbol" class="input-xlarge form-control" />
+</p>
+<p>
+    Stock name: <input type="text" name="stockname" class="input-xlarge form-control" />
+</p>
+<p>
+    <input type="submit" value="Search stock" class="btn btn-outline-dark"/>
+</p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Symbol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Symbol)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<br />
+<div>
+    <a asp-action="Index" class="normal-link">Back to List</a>
+</div>

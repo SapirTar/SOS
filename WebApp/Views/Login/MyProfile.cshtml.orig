@@ -1,0 +1,97 @@
+<<<<<<< HEAD
+﻿@model WebApp.Models.User
+=======
+﻿@model WebApp.Models.CreditCard
+
+>>>>>>> d30567daf4e3a9cbfb75fd9519466325264db4b9
+@{
+    ViewData["Title"] = "My Profile";
+}
+<body>
+    <script>
+        function loadXMLDoc() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    myFunction(this);
+                }
+            };
+            xmlhttp.open("GET", "/hot_stocks.xml", true);
+            xmlhttp.send();
+        }
+        function myFunction(xml) {
+            var i;
+            var xmlDoc = xml.responseXML;
+            var table = "<tr><th>Name</th><th>Symbol</th><th>Market</th></tr>";
+            var x = xmlDoc.getElementsByTagName("STOCK");
+            for (i = 0; i < x.length; i++) {
+                table += "<tr><td>" +
+                    x[i].getElementsByTagName("NAME")[0].childNodes[0].nodeValue +
+                    "</td><td>" +
+                    x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+                    "</td><td>" +
+                    x[i].getElementsByTagName("MARKET")[0].childNodes[0].nodeValue +
+                    "</td></tr>";
+            }
+            document.getElementById("hotstocks").innerHTML = table;
+        }
+    </script>
+</body>
+<br />
+<h1>User Profile</h1>
+<br />
+<a asp-action="InputCC">Enter Credit Card</a>
+<br />
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayFor(model => model.Username)
+        </dt>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Birthdate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Birthdate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Admin)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Admin)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OwnedStocks) @*NOT SURE HOW TO SHOW THIS LIST CORRECTLY*@
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OwnedStocks)
+        </dd>
+    </dl>
+</div>
+
+<!-- Ajax -->
+<br />
+<button type="button" onclick="loadXMLDoc()">Hot stocks &#128293</button>
+<br />
+<<<<<<< HEAD
+<table id="hotstocks"></table>
+=======
+<table id="demo"></table>
+>>>>>>> d30567daf4e3a9cbfb75fd9519466325264db4b9
+

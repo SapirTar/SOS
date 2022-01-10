@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CATALOG>
+  <STOCK>
+    <NAME>Bayerische Motoren Werke AG</NAME>
+    <TITLE>BMWYY</TITLE>
+    <MARKET>XETRA</MARKET>
+  </STOCK>
+  <STOCK>
+    <NAME>El Al Israel Airlines Ltd</NAME>
+    <TITLE>ELALF</TITLE>
+    <MARKET>NASDAQ</MARKET>
+  </STOCK>
+  <STOCK>
+    <NAME>Pfizer Inc</NAME>
+    <TITLE>PFE</TITLE>
+    <MARKET>NYSE </MARKET>
+  </STOCK>
+  <STOCK>
+    <NAME>Teva- Pharmaceutical Industries Ltd</NAME>
+    <TITLE>Teva</TITLE>
+    <MARKET>TLV</MARKET>
+  </STOCK>
+  <STOCK>
+    <NAME>United Airlines Holdings Inc</NAME>
+    <TITLE>UAL</TITLE>
+    <MARKET>NASDAQ</MARKET>
+  </STOCK>
+</CATALOG>

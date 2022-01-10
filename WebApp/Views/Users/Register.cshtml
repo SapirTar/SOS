@@ -1,0 +1,93 @@
+﻿@model WebApp.Models.User
+
+@{
+    ViewData["Title"] = "Register";
+}
+<br />
+<form class="form-horizontal" method="POST" asp-action="CreateFromRegistration">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <fieldset>
+
+        <!--Aside-->
+        <aside>
+            Do you own an account? <a class="nav-link  font-weight-normal" asp-area="" asp-controller="Login" asp-action="Index">Log-in!</a>
+        </aside>
+
+        <!-- Username -->
+        <div class="control-group">
+            <label class="control-label" for="username">Username</label>
+            <div class="controls">
+                <span asp-validation-for="Username" class="text-danger"></span>
+                <input asp-for="Username" type="text" placeholder="" class="input-xlarge form-control" />
+            </div>
+        </div>
+
+        <!-- Email -->
+        <div class="control-group">
+            <label class="control-label" for="email">Email</label>
+            <div class="controls">
+                <span asp-validation-for="Email" class="text-danger"></span>
+                <input asp-for="Email" type="email" class="input-xlarge form-control" />
+            </div>
+        </div>
+
+        <!-- Password -->
+        <div class="control-group">
+            <label class="control-label" for="password">Password</label>
+            <div class="controls">
+                <span asp-validation-for="Password" class="text-danger"></span>
+                <input asp-for="Password" type="password" id="password" name="password" placeholder="" class="input-xlarge form-control" />
+            </div>
+        </div>
+
+        @{
+            if (User.Identity.IsAuthenticated)
+            {
+                var isAdmin = false;
+                var claims = User.Claims.ToList();
+                foreach (var c in claims)
+                {
+                    if (c.Value == "Admin")
+                    {
+                        isAdmin = true;
+                    }
+                }
+
+                if (isAdmin == true)
+                {
+                    <!-- Admin -->
+                    <div class="control-group">
+                        <label class="control-label" for="admin">Is Admin?</label>
+                        <div class="controls mb-3 form-check form-switch">
+                            <input asp-for="Admin" class="form-select form-check-input" type="checkbox" />
+                            <span asp-validation-for="Admin" class="text-danger"></span>
+                        </div>
+                    </div>
+                }
+            }
+        }
+        <!-- Birth Date -->
+        <div class="control-group">
+            <label class="control-label" for="password">Birthdate</label>
+            <div class="controls">
+                <input asp-for="Birthdate" class="form-control" />
+                <span asp-validation-for="Birthdate" class="text-danger"></span>
+            </div>
+        </div>
+        <br />
+
+
+        <!-- Canvas -->
+        <label class="control-label" for="canvas">Sign here</label> <br />
+        <canvas id="canvas"></canvas>
+        <script src="~/js/site.js"></script>
+
+        <div class="control-group">
+            <!-- Button -->
+            <div class="controls">
+                <input type="submit" value="Register" class="btn btn-primary" />
+            </div>
+        </div>
+
+    </fieldset>
+</form>
