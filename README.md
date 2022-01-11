@@ -1,5 +1,7 @@
-# SOS
+# SOStock
 This repository contains a stock trading web application. The website demonstrates buying stocks and investments management. 
+
+![‏‏homescr](https://user-images.githubusercontent.com/83066973/148753245-795f752d-14d6-4266-8a77-516cbc23f854.PNG)
 
 ## Running the app
 1. Clone this repo
