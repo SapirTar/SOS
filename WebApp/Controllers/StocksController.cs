@@ -27,26 +27,17 @@ namespace WebApp.Controllers
             _stockService = stockService;
             _userService = userService;
 
-
+        }
+        string CreateQuery (string funcName, string paramName string symbolValue)
+        {
+            string _AlphaVantageKey="<api-key>";
+            return ("https://www.alphavantage.co/query?function=" +funcName+ "&" +paramName+ "=" +symbolValue+ "&apikey=" +_AlphaVantageKey);
         }
 
         // GET: Stocks
         public async Task<IActionResult> Index()
         {
-            {/*var symbol1s = new List<string>()
-                    {
-                        "IBM",
-                        "MSFT",
-                        "Teva",
-                        "UAL",
-                        "ELALF",
-                        "M1RN34.SAO",
-                        "PFE",
-                        "TSLA",
-                        "GOOGL",
-                        "BMWYY"
-                    };*/
-            }
+  
             if (!_context.Stock.Any())
             {
 
@@ -80,9 +71,6 @@ namespace WebApp.Controllers
                         await _context.SaveChangesAsync();
 
                     };
-                    { 
-
-                    }
                 }
             }
 
@@ -93,23 +81,23 @@ namespace WebApp.Controllers
                     foreach (var symbol in symbols)
 
                     {
-                        string QUERY_URL = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + symbol + "&apikey=XXX";
-                        string QUERY_URL2 = "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=" + symbol + "&apikey=XXX";
+                        string QUERY_URL_GlobalQuote = CreateQuery("GLOBAL_QUOTE","symbol",symbol);
+                        string QUERY_URL_SymbolSearch = CreateQuery("SYMBOL_SEARCH","keywords",symbol);
 
-                        Uri queryUri = new Uri(QUERY_URL);
-                        Uri queryUri2 = new Uri(QUERY_URL2);
+                        Uri queryUri_GlobalQuote = new Uri(QUERY_URL_GlobalQuote);
+                        Uri queryUri_SymbolSearch = new Uri(QUERY_URL_SymbolSearch);
 
-                        dynamic json_data = JsonSerializer.Deserialize<Dictionary<string, dynamic>>(client.DownloadString(queryUri));
-                        dynamic json_data2 = JsonSerializer.Deserialize<Dictionary<string, dynamic>>(client.DownloadString(queryUri2));
+                        dynamic json_data_GlobalQuote = JsonSerializer.Deserialize<Dictionary<string, dynamic>>(client.DownloadString(queryUri_GlobalQuote));
+                        dynamic json_data_SymbolSearch = JsonSerializer.Deserialize<Dictionary<string, dynamic>>(client.DownloadString(queryUri_SymbolSearch));
 
-                        dynamic jsi = json_data["Global Quote"];
-                        dynamic jsi2 = json_data2["bestMatches"];
+                        dynamic jsi_GlobalQuote = json_data_GlobalQuote["Global Quote"];
+                        dynamic jsi_SymbolSearch = json_data_SymbolSearch["bestMatches"];
 
 
-                        string data = jsi.GetRawText();
-                        Dictionary<string, string> dic = JsonSerializer.Deserialize<Dictionary<string, string>>(data);
-                        string data2 = jsi2.GetRawText();
-                        var results = JsonSerializer.Deserialize<List<dynamic>>(data2);
+                        string data_GlobalQuote = jsi_GlobalQuote.GetRawText();
+                        Dictionary<string, string> dic = JsonSerializer.Deserialize<Dictionary<string, string>>(data_GlobalQuote);
+                        string data_SymbolSearch = jsi_SymbolSearch.GetRawText();
+                        var results = JsonSerializer.Deserialize<List<dynamic>>(data_SymbolSearch);
                         Dictionary<string, string> result = JsonSerializer.Deserialize<Dictionary<string, string>>(results[0].GetRawText());
                         string s_symbol = dic["01. symbol"];
                         string s_name = result["2. name"];
