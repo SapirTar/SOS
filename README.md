@@ -5,30 +5,32 @@ This repository contains a stock trading web application. The website demonstrat
 
 ## Running the app
 1. Clone this repo
+
 2. Get a private key for each API used in this repo:
    - [Alpha Vantage](https://www.alphavantage.co/support/#api-key)
    - [Twitter](https://developer.twitter.com/en/docs/tutorials/step-by-step-guide-to-making-your-first-request-to-the-twitter-api-v2)
    - [Google Maps](https://developers.google.com/maps/documentation/javascript/overview)
+   
+3. Open the files in Visual Studio IDE. [Click to download the community version.](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&rel=17)
 
-3. Replace the ``XXX`` with your API key in these places:
+4. Replace the ``<place-holders>`` with your API key in these places:
     - Alpha Vantage:    
     ``SocksController.cs``
       ``` C#
-      96. string QUERY_URL = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + symbol + "&apikey=XXX";
-      97. string QUERY_URL2 = "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=" + symbol + "&apikey=XXX";
+      33.  const string _AlphaVantageKey="<api-key>";
       ```
     - Twitter:    
     ``TwitterAPIController.cs``
       ``` C#
-      13. public static string _ConsumerKey = "XXX";
-      14. public static string _ConsumerSecret = "XXX";
-      15. public static string _AccessToken = "XXX";
-      16. public static string _AccessTokenSecret = "XXX";
+      13. const string _ConsumerKey = "<consumer-key>";
+      14. const string _ConsumerSecret = "<consumer-secret>";
+      15. const string _AccessToken = "<access-token>";
+      16. const string _AccessTokenSecret = "<access-token-secret>";
       ```
     - Google Maps:    
     ``Index.cshtml``
-      ``` HTML
-      50. <script async src="https://maps.googleapis.com/maps/api/js?key=XXX&callback=initMap"></script>
-      ```
+         ``` HTML
+         50. <script async src="https://maps.googleapis.com/maps/api/js?key=<google-api-key>&callback=initMap"></script>
+         ```
   
 
