@@ -10,10 +10,10 @@ namespace WebApp.Controllers
     public class TwitterAPIController : Controller
     {
        
-        public static string _ConsumerKey = "<consumer-key>";
-        public static string _ConsumerSecret = "<consumer-secret>";
-        public static string _AccessToken = "<access-token>";
-        public static string _AccessTokenSecret = "<access-token-secret>";
+        const string _ConsumerKey = "<consumer-key>";
+        const string _ConsumerSecret = "<consumer-secret>";
+        const string _AccessToken = "<access-token>";
+        const string _AccessTokenSecret = "<access-token-secret>";
 
         protected TwitterSearchResult GetTwitterSearchResult()
         {

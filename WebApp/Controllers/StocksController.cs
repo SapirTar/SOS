@@ -30,7 +30,7 @@ namespace WebApp.Controllers
         }
         string CreateQuery (string funcName, string paramName string symbolValue)
         {
-            string _AlphaVantageKey="<api-key>";
+            const string _AlphaVantageKey="<api-key>";
             return ("https://www.alphavantage.co/query?function=" +funcName+ "&" +paramName+ "=" +symbolValue+ "&apikey=" +_AlphaVantageKey);
         }
 
